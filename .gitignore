@@ -222,7 +222,6 @@
 /node_modules/node-addon-api/node_api.gyp
 /node_modules/node-addon-api/noexcept.gypi
 /node_modules/node-addon-api/nothing.c
-/docs/output.css
 /node_modules/@jridgewell/gen-mapping/package.json
 /node_modules/@jridgewell/remapping/package.json
 /node_modules/@jridgewell/resolve-uri/package.json
