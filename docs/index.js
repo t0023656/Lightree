@@ -14,7 +14,7 @@ import {Application, Assets, Container, Graphics, Sprite} from 'pixi.js';
     const circle3 = createCircle(40, -80, 10, 0x5050aa);
     const circle4 = createCircle(0, 0, 3, 0x333333);
 
-    app.stage.on('resize', () => {
+    app.renderer.on('resize', () => {
         circleMain.x = app.screen.width / 2;
         circleMain.y = app.screen.height / 2;
         circle1.x = app.screen.width / 2;
@@ -41,7 +41,7 @@ import {Application, Assets, Container, Graphics, Sprite} from 'pixi.js';
         circle4.x = circleMain.x + Math.cos(circleMain.rotation) * 100 + Math.sin(elapsed * 5) * 50;
         if (circle4.x - preCircle4X <= 0) {
             circle4.alpha = 0.5;
-        }else{
+        } else {
             circle4.alpha = 1;
         }
 
