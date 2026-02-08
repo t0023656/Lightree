@@ -7,6 +7,7 @@ import {Application, Assets, Container, Graphics, Sprite} from 'pixi.js';
     document.body.appendChild(app.canvas);
     app.canvas.classList.add('fixed', 'top-0', 'left-0', '-z-10', 'w-full', 'h-full');
 
+    //TODO: 需要重構
     const circleMain = createCircle(100, 0, 50, 0xaaaaaa);
     const circle1 = createCircle(40, 80, 10, 0xaa5050);
     const circle2 = createCircle(200, 0, 10, 0x70aa70);
@@ -35,8 +36,16 @@ import {Application, Assets, Container, Graphics, Sprite} from 'pixi.js';
         circle2.rotation += 0.01 * time.deltaTime; // 每幀旋轉一點點
         circle3.rotation += 0.01 * time.deltaTime; // 每幀旋轉一點點
         circle4.rotation += 0.02 * time.deltaTime; // 每幀旋轉一點點
-        circle4.y = (app.screen.height / 2) + Math.sin(elapsed) * 120;
-        circle4.x = (app.screen.width / 2) + Math.sin(elapsed) * 120 ;
+
+        const preCircle4X = circle4.x
+        circle4.x = circleMain.x + Math.cos(circleMain.rotation) * 100 + Math.sin(elapsed * 5) * 50;
+        if (circle4.x - preCircle4X <= 0) {
+            circle4.alpha = 0.5;
+        }else{
+            circle4.alpha = 1;
+        }
+
+        circle4.y = circleMain.y + Math.sin(circleMain.rotation) * 100 + Math.sin(elapsed * 5) * 50;
     });
 
     function createCircle(x, y, radius, color) {
